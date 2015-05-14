@@ -19,7 +19,7 @@ DESC customer;
 ```
 
 <blockquote>
-	<b>Note:</b> SHOW CREATE TABLE table_name can also show table structures in a SQL-style way.
+	<b>Note:</b> <i>SHOW CREATE TABLE table_name</i> can also show table structures in a SQL-style way.
 </blockquote>
 
 <pre>
@@ -38,3 +38,26 @@ DESC customer;
 +-------------+----------------------+------+-----+-------------------+-----------------------------+
 </pre>
 
+The follow command is trying to copy data from sakila.customer into demo.customer:
+```
+INSERT INTO customer SELECT * FROM sakila.customer; 
+```
+
+Here we can fetch the first 2 records from demo.customer:
+```
+SELECT * FROM customer LIMIT 2;
+```
+
+<pre>
++-------------+----------+------------+-----------+-------------------------------------+------------+--------+---------------------+---------------------+
+| customer_id | store_id | first_name | last_name | email                               | address_id | active | create_date         | last_update         |
++-------------+----------+------------+-----------+-------------------------------------+------------+--------+---------------------+---------------------+
+|           1 |        1 | MARY       | SMITH     | MARY.SMITH@sakilacustomer.org       |          5 |      1 | 2006-02-14 22:04:36 | 2006-02-15 04:57:20 |
+|           2 |        1 | PATRICIA   | JOHNSON   | PATRICIA.JOHNSON@sakilacustomer.org |          6 |      1 | 2006-02-14 22:04:36 | 2006-02-15 04:57:20 |
++-------------+----------+------------+-----------+-------------------------------------+------------+--------+---------------------+---------------------+
+</pre>
+
+Alternatively, we can simply use `CREATE TABLE table_name SELECT ...` to accomplish the same task above:
+```
+CREATE TABLE customer SELECT * FROM sakila.customer;
+```
