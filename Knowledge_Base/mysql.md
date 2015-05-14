@@ -2,21 +2,25 @@
 
 The following commands are used to create a table name `demo.customer` which has the same structure as `sakila.customer`.
 
-> Note: sakila is a demo database which comes along with MySQL 
+<blockquote>
+ 	<b>Note:</b> sakila is a demo database which comes along with MySQL.
+</blockquote>
 
-<pre><code>
+```
 CREATE DATABASE demo;
 USE demo;
 CREATE TABLE customer LIKE sakila.customer;
-</code></pre>
+```
 
-We can use `DESC` or `DISCRIBE` to display the table structure:
+Then, we can use `DESC` or `demo.customer` to display the table structure:
 
 <pre><code>
 DESC customer;
 </code></pre>
 
-> Note: SHOW CREATE TABLE table_name can also show table structures in a SQL-style way.
+<blockquote>
+	<b>Note:</b> SHOW CREATE TABLE table_name can also show table structures in a SQL-style way.
+</blockquote>
 
 <pre>
 +-------------+----------------------+------+-----+-------------------+-----------------------------+
