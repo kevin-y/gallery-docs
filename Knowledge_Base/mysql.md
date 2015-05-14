@@ -1,5 +1,48 @@
 # MySQL Tutorial
 
+## Introduction
+
+This is a tutorial form MySQL, but I won't cover all of the features or details in this tutorial. Instead, I will only focus on what comes out of my thoughts and I will update this occasionally. For more information please check [MySQL Official Website](http://dev.mysql.com/ "MySQL Official Website").
+
+## Creating users
+1. Creating a user named `kevin` with password `123456`
+
+```
+CREATE USER 'kevin'@'localhost' IDENTIFIED BY '123456';
+```
+<blockquote>
+<b>Note:</b> 'kevin'@'localhost' means if you can only login at localhost with the account `kevin`
+</blockquote>
+
+2. Grant all privileges to `kevin@localhost` on database sakila
+
+```
+GRANT ALL ON sakila.* TO 'kevin'@'localhost';
+```
+
+3. Update privileges, it basically tells MySQL to load privileges into memory
+
+```
+FLUSH PRIVILEGES;
+```
+
+4. Now, you may log into MySQL with `kevin`
+
+```
+mysql -u kevin -p123456
+```
+<pre>
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| sakila             |
++--------------------+
+</pre>
+
+## Creating tables
+
 The following commands are used to create a table name `demo.customer` which has the same structure as `sakila.customer`.
 
 <blockquote>
@@ -60,4 +103,41 @@ SELECT * FROM customer LIMIT 2;
 Alternatively, we can simply use `CREATE TABLE table_name SELECT ...` to accomplish the same task above:
 ```
 CREATE TABLE customer SELECT * FROM sakila.customer;
+```
+
+The following example shows how to use `IF` in a SELECT statement, first we need to create a table named `person`, and then insert some data.
+
+```
+CREATE TABLE  IF NOT EXISTS person(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(20) NOT NULL,
+	gender CHAR(1) DEFAULT 'N',
+	age INT UNSIGNED
+);
+
+INSERT INTO person(name, gender, age) VALUES('kevin', 'M', 26);
+INSERT INTO person(name, gender, age) VALUES('lucy', 'F', 22);
+INSERT INTO person(name, gender) VALUES('jhon', 'M');
+
++----+-------+--------+------+
+| id | name  | gender | age  |
++----+-------+--------+------+
+|  1 | kevin | M      |   26 |
+|  2 | lucy  | F      |   22 |
+|  3 | jhon  | M      | NULL |
++----+-------+--------+------+
+```
+
+Here we use `IF` to give age a value UNKNOWN if it's null:
+
+```
+SELECT id, name, gender, IF(age IS NULL, 'UNKNOWN', age) AS age FROM person;
+
++----+-------+--------+---------+
+| id | name  | gender | age     |
++----+-------+--------+---------+
+|  1 | kevin | M      | 26      |
+|  2 | lucy  | F      | 22      |
+|  3 | jhon  | M      | UNKNOWN |
++----+-------+--------+---------+
 ```
