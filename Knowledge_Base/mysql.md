@@ -14,9 +14,9 @@ CREATE TABLE customer LIKE sakila.customer;
 
 Then, we can use `DESC` or `demo.customer` to display the table structure:
 
-<pre><code>
+```
 DESC customer;
-</code></pre>
+```
 
 <blockquote>
 	<b>Note:</b> SHOW CREATE TABLE table_name can also show table structures in a SQL-style way.
