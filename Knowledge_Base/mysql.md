@@ -132,6 +132,9 @@ Here we use `IF` to give age a value UNKNOWN if it's null:
 
 ```
 SELECT id, name, gender, IF(age IS NULL, 'UNKNOWN', age) AS age FROM person;
+or 
+SELECT id, name, gender, IFNULL(age,'UNKNOWN') AS age FROM person;
+alternatively.
 
 +----+-------+--------+---------+
 | id | name  | gender | age     |
