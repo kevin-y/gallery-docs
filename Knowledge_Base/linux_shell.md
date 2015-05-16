@@ -6,6 +6,7 @@ If a username is not provided, it will switch to the superuser by default. And i
 More information please use `man su`.
 
 <blockquote>
+<pre>
 Usage: su [options] [LOGIN]
 
 Options:
@@ -16,6 +17,7 @@ Options:
   --preserve-environment        do not reset environment variables, and
                                 keep the same shell
   -s, --shell SHELL             use SHELL instead of the default in passwd
+</pre>
 </blockquote>
 
 Examples:
