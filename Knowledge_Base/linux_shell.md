@@ -1,6 +1,8 @@
 # Linux Shell/Commands
 
-### su - change user ID or become superuser
+### su(substitute user) - change user ID or become superuser
+
+`su` is used to hand over ownership of the session associated with the current login user to another user specified by the command, maybe a root user if no username provided. [See more with this link](http://www.linfo.org/su.html).
 
 If a username is not provided, it will switch to the superuser by default. And if the optional argument `-` is provided, it will have similar environment with the current user.
 More information please use `man su`.
@@ -27,12 +29,13 @@ $ su another_username -c ls
 Password: 
 Downloads	Pictures	Public	Templates	desktop		examples.desktop	Videos
 Documents	Music		
+```
 
-$ su -
+```
+$ su - 
 Password: 
 # pwd
 /root
-
 ```
-
+Same as `su - root`
 
