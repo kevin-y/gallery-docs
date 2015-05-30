@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a tutorial form MySQL, but I won't cover all of the features or details in this tutorial. Instead, I will only focus on what comes out of my thoughts and I will update this occasionally. For more information please check [MySQL Official Website](http://dev.mysql.com/ "MySQL Official Website").
+This is a tutorial for MySQL, but I won't cover all of the features or details in this tutorial. Instead, I will only focus on what comes out of my thoughts and I will update this occasionally. For more information please check [MySQL Official Website](http://dev.mysql.com/ "MySQL Official Website").
 
 ## Creating users
 1. Creating a user named `kevin` with password `123456`
